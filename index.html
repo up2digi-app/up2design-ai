@@ -631,6 +631,69 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal" id="faq-container"></div>
     </section>
 
+    <!-- Free Consultation / Lead Capture Section -->
+    <section id="konsultasi" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 reveal">
+        <div class="glass-card border border-primary/20 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-2xl">
+            <!-- Background effects -->
+            <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-primary opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-accent opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+            
+            <div class="text-center mb-10 relative z-10">
+                <div class="section-heading-container mb-4">
+                    <span class="section-label block justify-center">Free Consultation</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-textMain tracking-tight"><span class="editorial-font">Konsultasi</span> Gratis</h2>
+                </div>
+                <p class="text-gray-600 font-medium">Ceritakan kebutuhan desain Anda. Tim kami akan menghubungi Anda melalui WhatsApp.</p>
+            </div>
+
+            <form id="lead-form" class="relative z-10 space-y-6 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="lead-name" class="block text-sm font-bold text-textMain mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="lead-name" name="name" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div>
+                        <label for="lead-whatsapp" class="block text-sm font-bold text-textMain mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                        <!-- PATCH v1.2: Memastikan type="tel" alih-alih number agar nol di depan tidak hilang -->
+                        <input type="tel" id="lead-whatsapp" name="whatsapp" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="Contoh: 081234567890">
+                    </div>
+                </div>
+                <div>
+                    <label for="lead-service" class="block text-sm font-bold text-textMain mb-2">Layanan Yang Dibutuhkan <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <select id="lead-service" name="service" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                            <option value="" disabled selected>Pilih Layanan</option>
+                            <option value="Logo Design">Logo Design</option>
+                            <option value="Social Media Design">Social Media Design</option>
+                            <option value="Banner Design">Banner Design</option>
+                            <option value="Packaging Design">Packaging Design</option>
+                            <option value="Company Profile">Company Profile</option>
+                            <option value="Landing Page Design">Landing Page Design</option>
+                            <option value="Custom Design">Custom Design</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                            <i class="ph-bold ph-caret-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="lead-notes" class="block text-sm font-bold text-textMain mb-2">Catatan Kebutuhan <span class="text-gray-400 text-xs font-normal">(Opsional)</span></label>
+                    <textarea id="lead-notes" name="notes" rows="4" class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 resize-none" placeholder="Ceritakan lebih detail tentang bisnis dan kebutuhan visual Anda..."></textarea>
+                </div>
+                <div class="pt-4 text-center">
+                    <button type="submit" id="submit-lead-btn" class="inline-flex items-center justify-center w-full md:w-auto bg-gradient-primary hover:bg-gradient-hover text-white px-10 py-4 rounded-full font-bold text-lg magnetic-btn cta-btn-glow disabled:opacity-70 disabled:cursor-not-allowed transition-all">
+                        <span id="submit-lead-text">Kirim Konsultasi Gratis</span>
+                        <i class="ph-bold ph-paper-plane-tilt ml-2" id="submit-lead-icon"></i>
+                        <svg id="submit-lead-spinner" class="animate-spin ml-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div class="absolute inset-0 bg-textMain"></div>
@@ -705,7 +768,7 @@
     <script>
         // --- PATCH A & B: CONFIG ENGINE & BOOT ENGINE ---
         window.CONFIG = {
-            gas_api_url: "https://script.google.com/macros/s/AKfycbwqSuNmYDklETpw5qP_9k5JXmp3lOYhjMewI3FFFK8to1TEp7ZCB_RD5wf2ZocYX6-D/exec"
+            gas_api_url: "https://script.google.com/macros/s/AKfycbx8g9i-zwDYlDmHrW2pOjf9VgTbj6s7CEvFPPWHRyX9Bqf8jDG9CsI81O-Inflqn5mR/exec"
         };
         window.API_URL = window.CONFIG.gas_api_url;
 
@@ -1347,6 +1410,117 @@
             });
         }, { threshold: 0.5 });
         counters.forEach(counter => counterObserver.observe(counter));
+
+        // --- LEAD CAPTURE ENGINE LOGIC ---
+        const leadForm = document.getElementById('lead-form');
+        const submitBtn = document.getElementById('submit-lead-btn');
+        const submitText = document.getElementById('submit-lead-text');
+        const submitIcon = document.getElementById('submit-lead-icon');
+        const submitSpinner = document.getElementById('submit-lead-spinner');
+
+        if (leadForm) {
+            leadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('lead-name').value.trim();
+                
+                // PATCH v1.2: Memastikan whatsapp ditangkap sebagai teks biasa (string) tanpa dirubah ke Number() 
+                // Sehingga karakter 0 di awal (cth: 0812...) tidak menghilang saat di kirim ke payload.
+                const whatsapp = document.getElementById('lead-whatsapp').value.trim();
+                
+                const service = document.getElementById('lead-service').value;
+                const notes = document.getElementById('lead-notes').value.trim();
+
+                if (!name || !whatsapp || !service) {
+                    showToast('Mohon lengkapi data wajib (Nama, WhatsApp, Layanan).', 'error');
+                    return;
+                }
+
+                // Loading State
+                submitBtn.disabled = true;
+                submitText.textContent = 'Mengirim...';
+                submitIcon.classList.add('hidden');
+                submitSpinner.classList.remove('hidden');
+
+                try {
+                    if (!window.API_URL) throw new Error("API_URL not found");
+
+                    // Memasukkan raw string secara langsung ke payload JSON
+                    const payload = {
+                        name: name,
+                        whatsapp: whatsapp, 
+                        service: service,
+                        notes: notes,
+                        source: "Landing Page"
+                    };
+
+                    const res = await fetch(window.API_URL + "?action=create_lead", {
+                        method: "POST",
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await res.json();
+                    
+                    if (data.success) {
+                        showToast('Terima kasih. Tim UP2Design AI akan menghubungi Anda segera.', 'success');
+                        leadForm.reset();
+                    } else {
+                        throw new Error(data.message || 'Gagal mengirim data');
+                    }
+                } catch (error) {
+                    console.error('Lead Submit Error:', error);
+                    showToast('Gagal mengirim data. Silakan coba lagi.', 'error');
+                } finally {
+                    // Reset Loading State
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Kirim Konsultasi Gratis';
+                    submitIcon.classList.remove('hidden');
+                    submitSpinner.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- TOAST SYSTEM ---
+        function showToast(message, type = 'success') {
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'fixed bottom-6 right-6 z-[9999] flex flex-col gap-3 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'ph-check-circle text-green-500' : 'ph-warning-circle text-red-500';
+            const borderColor = type === 'success' ? 'border-green-100' : 'border-red-100';
+            const bgColor = type === 'success' ? 'bg-green-50' : 'bg-red-50';
+
+            toast.className = `flex items-center gap-3 p-4 rounded-xl shadow-xl border ${borderColor} bg-white transform translate-y-10 opacity-0 transition-all duration-300 ease-out pointer-events-auto min-w-[300px] max-w-sm`;
+            toast.innerHTML = `
+                <div class="flex-shrink-0 w-10 h-10 ${bgColor} rounded-full flex items-center justify-center">
+                    <i class="ph-fill ${icon} text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-sm font-bold text-textMain">${type === 'success' ? 'Berhasil' : 'Error'}</p>
+                    <p class="text-xs text-gray-500 mt-0.5">${message}</p>
+                </div>
+                <button class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none" onclick="this.parentElement.remove()">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            `;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            });
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
 
         // EXECUTE RUNTIME
         initApp();
