@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">UP2Design AI | Desain Profesional Untuk Bisnis Modern</title>
+    <meta name="description" content="Logo, Banner, Thumbnail YouTube, Konten Sosial Media, Ads Creative berkualitas agency untuk bisnis modern.">
+    
+    <!-- Favicon -->
+    <link id="favicon" rel="icon" type="image/x-icon" href="https://up2digi-app.github.io/up2digital-assets/up2designai/favicon.ico">
+    
+    <!-- Google Fonts: Poppins & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6C63FF',
+                        secondary: '#8B5CF6',
+                        accent: '#22D3EE',
+                        textMain: '#0F172A',
+                        background: '#FFFFFF',
+                        surface: '#F8FAFC',
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #22D3EE 100%)',
+                        'gradient-hover': 'linear-gradient(135deg, #5a52e0 0%, #7c4dff 50%, #1cb8d1 100%)',
+                    },
+                    animation: {
+                        'marquee-ltr': 'marqueeLtr 25s linear infinite',
+                        'marquee-rtl': 'marqueeRtl 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'micro-float': 'microFloat 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                        'shimmer-flow': 'shimmerFlow 5s linear infinite',
+                        'skeletonLoading': 'skeletonLoading 2s infinite',
+                    },
+                    keyframes: {
+                        marqueeLtr: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0%)' },
+                        },
+                        marqueeRtl: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        microFloat: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: '0.4', transform: 'scale(1)' },
+                            '100%': { opacity: '0.8', transform: 'scale(1.1)' },
+                        },
+                        shimmerFlow: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' }
+                        },
+                        skeletonLoading: {
+                            '0%': { backgroundPosition: '100% 0' },
+                            '100%': { backgroundPosition: '-100% 0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Utilities */
+        body { color: #0F172A; background-color: #FFFFFF; overflow-x: hidden; }
+
+        /* Gasora-style Gradient Text for Brand */
+        .up2design-gradient-text {
+            background: linear-gradient(135deg, #6C63FF, #8B5CF6, #22D3EE, #6C63FF);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            animation: gradientMove 6s ease infinite;
+            filter: drop-shadow(0px 0px 8px rgba(108, 99, 255, 0.4));
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-text-shimmer {
+            background: linear-gradient(to right, #6C63FF 20%, #8B5CF6 40%, #22D3EE 50%, #8B5CF6 60%, #6C63FF 80%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 5s linear infinite;
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .hero-gradient-line { font-size: 0.72em; line-height: 1.1; padding-bottom: 0.1em; white-space: nowrap; }
+        @media (max-width: 768px) { .hero-gradient-line { font-size: 0.85em; white-space: normal; } }
+
+        .hero-badge-premium {
+            position: relative;
+            background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #6C63FF, #8B5CF6, #22D3EE) border-box;
+            border: 2px solid transparent; border-radius: 9999px;
+            box-shadow: 0 0 15px rgba(108, 99, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        .hero-badge-premium:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 25px rgba(108, 99, 255, 0.4); }
+
+        .ecosystem-link {
+            background: linear-gradient(to right, #6C63FF, #8B5CF6, #22D3EE);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; color: transparent;
+            transition: all 0.3s ease; position: relative; display: inline-block; font-weight: 800;
+        }
+        .ecosystem-link:hover { transform: scale(1.05); filter: drop-shadow(0px 0px 10px rgba(108, 99, 255, 0.5)); }
+        .ecosystem-link::after {
+            content: ''; position: absolute; width: 100%; height: 2px; bottom: -2px; left: 0;
+            background: linear-gradient(to right, #6C63FF, #8B5CF6, #22D3EE);
+            transform: scaleX(0); transform-origin: bottom right; transition: transform 0.3s ease-out;
+        }
+        .ecosystem-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(108, 99, 255, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Performance Patched Marquee Wrapper */
+        .marquee-wrapper { 
+            display: flex; 
+            width: max-content; 
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        .marquee-container:hover .marquee-wrapper { animation-play-state: paused; }
+        
+        /* Mobile Marquee Speed Override */
+        @media (max-width: 768px) {
+            .animate-marquee-ltr { animation-duration: 20s !important; }
+            .animate-marquee-rtl { animation-duration: 20s !important; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .bg-glow { position: absolute; border-radius: 50%; filter: blur(100px); z-index: -1; pointer-events: none; }
+
+        .editorial-font { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; }
+        .section-heading-container { margin-bottom: 2rem; position: relative; }
+        .section-label {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+            background: linear-gradient(90deg, #6C63FF, #8B5CF6, #22D3EE); background-size: 300% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s linear infinite; display: inline-flex; align-items: center;
+            margin-bottom: 0.75rem; font-size: 1.1rem; letter-spacing: 0.5px;
+        }
+        .section-label::before {
+            content: ''; display: inline-block; width: 8px; height: 8px; background-color: #22D3EE;
+            border-radius: 50%; margin-right: 8px; animation: pulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+        }
+        @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+
+        .section-title { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1; letter-spacing: -1px; color: #0F172A; text-shadow: 0 0 20px rgba(108, 99, 255, 0.12); }
+        .cta-section-title { text-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        .heading-divider { width: 120px; height: 4px; background: linear-gradient(90deg, #6C63FF, #8B5CF6, #22D3EE); border-radius: 999px; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+        .text-center .heading-divider { margin-left: auto; margin-right: auto; }
+        .heading-glow-bg { position: absolute; top: 50%; left: 0%; transform: translateY(-50%); width: 450px; height: 180px; background-color: #6C63FF; opacity: 0.10; filter: blur(100px); z-index: -1; pointer-events: none; }
+        .text-center .heading-glow-bg { left: 50%; transform: translate(-50%, -50%); }
+
+        .cta-editorial {
+            font-family: 'Playfair Display', serif; font-style: italic; background: linear-gradient(90deg, #6C63FF, #8B5CF6, #22D3EE);
+            background-size: 300% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 6s linear infinite;
+        }
+        .cta-glow { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(108, 99, 255, .25), transparent 70%); filter: blur(80px); z-index: -1; }
+
+        .floating-orb{ position:absolute; border-radius:9999px; pointer-events:none; filter:blur(80px); opacity:.25; z-index:-1; animation:orbFloat 12s ease-in-out infinite; }
+        .orb-1{ width:420px; height:420px; background:#6C63FF; }
+        .orb-2{ width:360px; height:360px; background:#22D3EE; animation-delay:3s; }
+        .orb-3{ width:300px; height:300px; background:#8B5CF6; animation-delay:6s; }
+        @keyframes orbFloat{ 0%{ transform: translateY(0px) translateX(0px); } 50%{ transform: translateY(-40px) translateX(20px); } 100%{ transform: translateY(0px) translateX(0px); } }
+        .mouse-glow{ position:fixed; width:350px; height:350px; border-radius:9999px; pointer-events:none; background: radial-gradient(circle, rgba(108,99,255,.18), transparent 70%); filter:blur(40px); z-index:0; transform: translate(-50%,-50%); }
+
+        .magnetic-btn { transition: transform 0.15s ease-out; will-change: transform; }
+        .cta-btn-glow { box-shadow: 0 0 30px rgba(108, 99, 255, 0.20); transition: box-shadow 0.3s ease, transform 0.15s ease-out; }
+        .cta-btn-glow:hover { box-shadow: 0 0 55px rgba(108, 99, 255, 0.60); transform: scale(1.05); }
+
+        .service-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(108, 99, 255, 0.15); border-color: rgba(108, 99, 255, 0.25); }
+
+        .testi-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .testi-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+        .testi-card img { transition: transform 0.4s ease; }
+        .testi-card:hover img { transform: scale(1.08); }
+
+        .pricing-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .pricing-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); }
+        .pricing-business { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .pricing-business:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 25px 70px rgba(108, 99, 255, 0.25); }
+
+        .social-icon { transition: all 0.3s ease; }
+        .social-icon:hover { transform: scale(1.12) rotate(6deg); }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); }
+
+        .gradient-border-wrap { position: relative; background: linear-gradient(90deg, #6C63FF, #8B5CF6, #22D3EE); border-radius: 9999px; padding: 2px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
+        .gradient-border-wrap:hover { box-shadow: 0 0 15px rgba(108, 99, 255, 0.4); transform: translateY(-2px); }
+        .gradient-border-inner { background: #FFFFFF; border-radius: 9999px; padding: 8px 24px; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #0F172A; }
+
+        .wc-featured { transform: scale(1.08) !important; box-shadow: 0 25px 50px -12px rgba(108, 99, 255, 0.4) !important; border: 2px solid rgba(108, 99, 255, 0.5); z-index: 20; opacity: 1 !important; }
+        .wc-dimmed { transform: scale(0.96) !important; opacity: 0.6 !important; z-index: 10; }
+
+        .image-fade { opacity: 0; transition: opacity 0.4s ease; }
+        .image-fade.loaded { opacity: 1; }
+        .skeleton { background: linear-gradient(90deg, #f1f5f9, #e2e8f0, #f1f5f9); background-size: 300% 100%; animation: skeletonLoading 2s infinite; border-radius: 1rem; }
+
+        .portfolio-card { border-radius: 2rem !important; background-color: #FFFFFF !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important; transition: all 0.5s ease !important; position: relative; overflow: hidden; border: none !important; transform: translateY(0); }
+        .portfolio-card:hover { transform: translateY(-12px) !important; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18), 0 0 20px rgba(108, 99, 255, 0.25) !important; }
+        .portfolio-card-border { position: absolute; inset: 0; border-radius: 2rem; padding: 2px; background: linear-gradient(135deg, #6C63FF, #8B5CF6, #22D3EE); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.5s ease; z-index: 20; pointer-events: none; }
+        .portfolio-card:hover .portfolio-card-border { opacity: 1; }
+        .portfolio-card::before { content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); transition: all 0.7s ease; z-index: 15; pointer-events: none; }
+        .portfolio-card:hover::before { left: 200%; }
+        .portfolio-card img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+        .portfolio-card:hover img { transform: scale(1.08) !important; }
+        .portfolio-overlay { background: linear-gradient(180deg, transparent 0%, rgba(15,23,42,.92) 100%); opacity: 0; transition: opacity 0.5s ease; z-index: 10; }
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-info { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .portfolio-card:hover .portfolio-info { opacity: 1; transform: translateY(0); }
+        .filter-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .filter-btn.active { background: linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #22D3EE 100%) !important; color: #FFFFFF !important; box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3) !important; transform: scale(1.03) !important; border-color: transparent !important; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Orbs and Mouse Glow -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+    <div class="floating-orb orb-1 top-[10%] left-[-150px]"></div>
+    <div class="floating-orb orb-2 top-[45%] right-[-120px]"></div>
+    <div class="floating-orb orb-3 bottom-[10%] left-[35%]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3 md:py-4">
+                <div class="flex-shrink-0 flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img class="h-20 md:h-[86px] w-auto object-contain transition-transform hover:scale-105 image-fade loaded logo-img" src="" alt="Logo" loading="lazy" decoding="async">
+                    <div class="flex flex-col justify-center">
+                        <span class="font-black text-[30px] sm:text-[34px] md:text-[40px] leading-tight tracking-tight up2design-gradient-text logo-text">UP2Design AI</span>
+                        <span class="text-[13px] md:text-[15px] text-gray-500 font-semibold tracking-wide hidden sm:block mt-0.5 tagline-text">Desain Profesional Untuk Bisnis Modern</span>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#beranda" class="text-textMain hover:text-primary font-bold transition-colors text-sm">Beranda</a>
+                    <a href="#layanan" class="text-textMain hover:text-primary font-bold transition-colors text-sm">Layanan</a>
+                    <a href="#portfolio" class="text-textMain hover:text-primary font-bold transition-colors text-sm">Portfolio</a>
+                    <a href="#harga" class="text-textMain hover:text-primary font-bold transition-colors text-sm">Harga</a>
+                    <a href="#faq" class="text-textMain hover:text-primary font-bold transition-colors text-sm">FAQ</a>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <a href="#" target="_blank" class="wa-link bg-gradient-primary hover:bg-gradient-hover text-white px-8 py-3.5 rounded-full font-bold text-sm magnetic-btn cta-btn-glow">
+                        Pesan Sekarang
+                    </a>
+                </div>
+                <div class="flex items-center lg:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-textMain hover:text-primary focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="lg:hidden hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full shadow-2xl" id="mobile-menu">
+            <div class="px-6 py-8 space-y-4">
+                <a href="#beranda" class="block text-lg font-bold text-textMain hover:text-primary">Beranda</a>
+                <a href="#layanan" class="block text-lg font-bold text-textMain hover:text-primary">Layanan</a>
+                <a href="#portfolio" class="block text-lg font-bold text-textMain hover:text-primary">Portfolio</a>
+                <a href="#harga" class="block text-lg font-bold text-textMain hover:text-primary">Harga</a>
+                <a href="#faq" class="block text-lg font-bold text-textMain hover:text-primary">FAQ</a>
+                <div class="pt-6 mt-4 border-t border-gray-100">
+                    <a href="#" target="_blank" class="wa-link block w-full text-center bg-gradient-primary text-white px-6 py-4 rounded-xl font-bold text-base shadow-lg magnetic-btn">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-44 pb-16 lg:pt-56 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="bg-glow bg-primary/20 w-[600px] h-[600px] top-[-200px] left-[-200px] animate-glow"></div>
+        <div class="bg-glow bg-accent/20 w-[500px] h-[500px] bottom-[10%] right-[-100px] animate-glow" style="animation-delay: 1.5s;"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+            <div class="reveal text-center lg:text-left">
+                <div class="hero-badge-premium inline-flex items-center space-x-2 bg-white px-5 py-2.5 mb-6 mx-auto lg:mx-0 cursor-default">
+                    <i class="ph-fill ph-magic-wand text-primary text-lg"></i>
+                    <span class="text-sm font-bold text-textMain tracking-wide uppercase">AI Powered Design Studio</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 glass-card rounded-full px-5 py-2.5 mb-8 shadow-sm text-xs sm:text-sm font-semibold text-textMain w-max mx-auto lg:mx-0">
+                    <span class="flex items-center"><i class="ph-fill ph-star text-yellow-400 text-base sm:text-lg mr-1.5"></i> 4.9/5 Rating</span>
+                    <span class="text-gray-300 hidden sm:inline">|</span>
+                    <span>120+ Klien</span>
+                    <span class="text-gray-300 hidden sm:inline">|</span>
+                    <span>500+ Desain</span>
+                </div>
+                <div class="relative z-10">
+                    <div class="absolute w-[250px] h-[250px] bg-primary/25 blur-[90px] rounded-full top-[-50px] left-[-20px] -z-10 pointer-events-none"></div>
+                    <div class="absolute w-[200px] h-[200px] bg-accent/20 blur-[80px] rounded-full bottom-[-20px] right-[20px] -z-10 pointer-events-none"></div>
+                    
+                    <h1 class="text-[2.75rem] sm:text-6xl lg:text-[4.2rem] font-black leading-[1.05] tracking-tight mb-6 text-textMain">
+                        Logo, Banner & Thumbnail 
+                        <span class="animate-text-shimmer hero-gradient-line block mt-2">Berkualitas Agency</span>
+                    </h1>
+                </div>
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium tagline-text">
+                    Desain profesional untuk UMKM, Property, Klinik, Travel, Startup, Creator, dan berbagai kebutuhan bisnis modern.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-5 mb-12">
+                    <a href="#" target="_blank" class="wa-link w-full sm:w-auto bg-gradient-primary hover:bg-gradient-hover text-white px-8 py-4 rounded-full font-bold text-base flex items-center justify-center magnetic-btn cta-btn-glow">
+                        Pesan Sekarang <i class="ph-bold ph-arrow-right ml-2 text-lg"></i>
+                    </a>
+                    <a href="#portfolio" class="w-full sm:w-auto bg-white border-2 border-gray-100 text-textMain hover:border-primary hover:text-primary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center magnetic-btn cta-btn-glow">
+                        Lihat Portfolio
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-y-4 gap-x-6 text-sm font-semibold text-gray-700">
+                    <div class="flex items-center"><i class="ph-bold ph-check text-primary mr-2 text-lg"></i> Fast Delivery</div>
+                    <div class="flex items-center"><i class="ph-bold ph-check text-primary mr-2 text-lg"></i> AI Assisted</div>
+                    <div class="flex items-center"><i class="ph-bold ph-check text-primary mr-2 text-lg"></i> Human Reviewed</div>
+                    <div class="flex items-center"><i class="ph-bold ph-check text-primary mr-2 text-lg"></i> Commercial Use</div>
+                    <div class="flex items-center"><i class="ph-bold ph-check text-primary mr-2 text-lg"></i> Revisi Sesuai Paket</div>
+                </div>
+            </div>
+
+            <!-- Hero Showcase Grid (Injected via JS) -->
+            <div class="reveal relative lg:ml-auto w-full max-w-[500px] mx-auto">
+                <div class="absolute -inset-4 bg-gradient-primary opacity-20 rounded-[2.5rem] blur-2xl animate-pulse"></div>
+                <div class="grid grid-cols-2 gap-4 relative z-10" id="hero-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Engine Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover-lift text-center reveal">
+                <div class="w-14 h-14 mx-auto bg-indigo-50 rounded-full flex items-center justify-center mb-4 text-primary"><i class="ph-fill ph-palette text-3xl"></i></div>
+                <div class="text-3xl lg:text-4xl font-black text-textMain mb-1"><span class="counter" data-target="500">0</span>+</div>
+                <p class="text-[11px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider">Desain Selesai</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover-lift text-center reveal" style="transition-delay: 100ms;">
+                <div class="w-14 h-14 mx-auto bg-purple-50 rounded-full flex items-center justify-center mb-4 text-secondary"><i class="ph-fill ph-users text-3xl"></i></div>
+                <div class="text-3xl lg:text-4xl font-black text-textMain mb-1"><span class="counter" data-target="120">0</span>+</div>
+                <p class="text-[11px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider">Klien Aktif</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover-lift text-center reveal" style="transition-delay: 200ms;">
+                <div class="w-14 h-14 mx-auto bg-cyan-50 rounded-full flex items-center justify-center mb-4 text-accent"><i class="ph-bold ph-repeat text-3xl"></i></div>
+                <div class="text-3xl lg:text-4xl font-black text-textMain mb-1"><span class="counter" data-target="98">0</span>%</div>
+                <p class="text-[11px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider">Repeat Order</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover-lift text-center reveal" style="transition-delay: 300ms;">
+                <div class="w-14 h-14 mx-auto bg-yellow-50 rounded-full flex items-center justify-center mb-4 text-yellow-500"><i class="ph-fill ph-star text-3xl"></i></div>
+                <div class="text-3xl lg:text-4xl font-black text-textMain mb-1"><span class="counter" data-target="4.9" data-float="true">0</span>/5</div>
+                <p class="text-[11px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider">Rating Pelanggan</p>
+            </div>
+        </div>
+
+        <div class="text-center reveal mb-16 lg:mb-24">
+            <h3 class="text-sm md:text-base font-bold text-gray-400 uppercase tracking-widest mb-8">
+                <span class="editorial-font cta-editorial" style="text-transform: none; font-size: 1.2em;">Dipercaya</span> Oleh Berbagai Industri
+            </h3>
+            <div class="flex flex-wrap justify-center gap-3 lg:gap-4 max-w-5xl mx-auto">
+                <script>
+                    ['Property', 'Travel', 'Klinik', 'UMKM', 'Cafe', 'YouTube Creator', 'Startup', 'Beauty', 'Wedding', 'Kontraktor'].forEach(tag => {
+                        document.write(`<div class="gradient-border-wrap"><div class="gradient-border-inner">${tag}</div></div>`);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Marquee Section -->
+    <section class="py-16 bg-surface overflow-hidden border-y border-gray-100 flex flex-col gap-8">
+        <div class="marquee-container relative w-full">
+            <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="marquee-wrapper animate-marquee-ltr pr-6 gap-6" id="marquee-row-1"></div>
+        </div>
+        <div class="marquee-container relative w-full">
+            <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="marquee-wrapper animate-marquee-rtl pr-4 gap-4" id="marquee-row-2">
+                <script>
+                    const ind = ['Kuliner', 'Property', 'Travel', 'Klinik', 'UMKM', 'Startup', 'YouTube', 'Kontraktor', 'Cafe', 'Wedding', 'Beauty', 'Fashion'];
+                    [...ind, ...ind].forEach(tag => {
+                        document.write(`<div class="flex-shrink-0 bg-white border border-gray-200 text-gray-600 font-bold px-8 py-4 rounded-full text-sm tracking-widest shadow-sm hover:border-primary hover:text-primary transition-colors cursor-default">#${tag.toUpperCase()}</div>`);
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="marquee-container relative w-full">
+            <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none"></div>
+            <div class="marquee-wrapper animate-marquee-ltr pr-6 gap-6" style="animation-duration: 20s;" id="marquee-row-3"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+            <div class="section-heading-container">
+                <div class="heading-glow-bg"></div>
+                <span class="section-label block">Our Services</span>
+                <h2 class="section-title"><span class="editorial-font">Layanan</span> Desain Utama</h2>
+                <div class="heading-divider"></div>
+            </div>
+            <p class="text-gray-600 text-lg font-medium">Solusi visual lengkap dan terarah untuk meningkatkan branding dan skala bisnis Anda.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <script>
+                const services = [
+                    { icon: 'ph-bezier-curve', color: 'text-primary bg-indigo-50', title: 'Logo Design', desc: 'Identitas visual profesional yang berkarakter dan mudah diingat oleh target market Anda.' },
+                    { icon: 'ph-presentation-chart', color: 'text-secondary bg-purple-50', title: 'Banner Design', desc: 'Banner promosi berkonversi tinggi untuk website, marketplace, dan event offline.' },
+                    { icon: 'ph-youtube-logo', color: 'text-red-500 bg-red-50', title: 'YouTube Thumbnail', desc: 'Desain cover video dengan rasio klik (CTR) tinggi untuk mendongkrak views channel Anda.' },
+                    { icon: 'ph-megaphone', color: 'text-accent bg-cyan-50', title: 'Ads Creative', desc: 'Materi iklan tajam untuk FB Ads, IG Ads & TikTok yang didesain khusus menghentikan scroll.' },
+                    { icon: 'ph-instagram-logo', color: 'text-pink-500 bg-pink-50', title: 'Social Media Content', desc: 'Feed, carousel, dan story yang rapi untuk membangun trust audiens di sosial media.' },
+                    { icon: 'ph-article', color: 'text-emerald-500 bg-emerald-50', title: 'Poster & Flyer', desc: 'Media promosi cetak dan digital untuk mengkomunikasikan kampanye marketing Anda.' }
+                ];
+                services.forEach((srv, i) => {
+                    document.write(`
+                        <div class="bg-white rounded-3xl p-8 border border-gray-100 reveal service-card hover-lift" style="transition-delay: ${i*50}ms;">
+                            <div class="w-16 h-16 rounded-2xl ${srv.color} flex items-center justify-center mb-6"><i class="ph-fill ${srv.icon} text-3xl"></i></div>
+                            <h3 class="text-xl font-bold mb-3 text-textMain">${srv.title}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">${srv.desc}</p>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-surface px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Why Choose Us Grid (Injected via JS) -->
+                <div class="reveal relative order-2 lg:order-1 hover-lift">
+                    <div class="absolute inset-0 bg-gradient-primary rounded-[3rem] transform -rotate-3 scale-105 opacity-10 blur-2xl"></div>
+                    <div class="grid grid-cols-2 gap-4 relative z-10" id="why-choose-grid"></div>
+                </div>
+
+                <div class="reveal order-1 lg:order-2">
+                    <div class="section-heading-container">
+                        <div class="heading-glow-bg"></div>
+                        <span class="section-label block">WHY CHOOSE US</span>
+                        <h2 class="section-title"><span class="editorial-font">Satu Studio Untuk Semua</span><br/>Kebutuhan Visual Bisnis Anda</h2>
+                        <div class="heading-divider" style="margin-left: 0;"></div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center mt-1 mr-4"><i class="ph-bold ph-lightning text-primary text-xl"></i></div>
+                            <div><h4 class="font-bold text-lg text-textMain mb-1">Fast Delivery</h4><p class="text-gray-600 text-sm">Alur kerja didesain untuk kecepatan tanpa mengorbankan kualitas grafis.</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center mt-1 mr-4"><i class="ph-bold ph-robot text-secondary text-xl"></i></div>
+                            <div><h4 class="font-bold text-lg text-textMain mb-1">AI Assisted Workflow</h4><p class="text-gray-600 text-sm">Ideasi dan eksekusi dipercepat menggunakan kecerdasan buatan terbaru.</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center mt-1 mr-4"><i class="ph-bold ph-user-check text-accent text-xl"></i></div>
+                            <div><h4 class="font-bold text-lg text-textMain mb-1">Human Reviewed</h4><p class="text-gray-600 text-sm">Sentuhan akhir dijamin oleh desainer grafis profesional.</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mt-1 mr-4"><i class="ph-bold ph-certificate text-green-500 text-xl"></i></div>
+                            <div><h4 class="font-bold text-lg text-textMain mb-1">Commercial License & Siap Upload</h4><p class="text-gray-600 text-sm">100% aman untuk bisnis. File langsung kami kirim dalam format siap pakai.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section (API Driven) -->
+    <section id="portfolio" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12 reveal flex flex-col items-center">
+            <div class="gradient-border-wrap inline-flex mb-6 hover-lift">
+                <div class="gradient-border-inner bg-white/90 backdrop-blur-md px-6 py-2 flex items-center space-x-2 rounded-full cursor-default">
+                    <i class="ph-fill ph-star text-primary text-lg"></i>
+                    <span class="text-xs font-bold text-textMain tracking-widest uppercase">Featured Works</span>
+                </div>
+            </div>
+            <div class="section-heading-container w-full">
+                <div class="heading-glow-bg"></div>
+                <h2 class="section-title"><span class="editorial-font">Karya</span> Terbaik Kami</h2>
+                <div class="heading-divider"></div>
+            </div>
+            <p class="text-gray-600 text-lg font-medium mb-10">Buktikan sendiri kualitas visual yang kami hasilkan untuk berbagai industri.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" id="portfolio-filters">
+            <button class="filter-btn active px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="semua">Semua</button>
+            <button class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="logo">Logo</button>
+            <button class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="banner">Banner</button>
+            <button class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="thumbnail">Thumbnail</button>
+            <button class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="ads">Ads</button>
+            <button class="filter-btn px-6 py-2.5 rounded-full bg-white text-gray-600 font-bold text-sm border border-gray-200 shadow-sm hover-lift" data-filter="social">Social Media</button>
+        </div>
+
+        <div id="portfolio-grid" class="transition-all duration-500 reveal w-full flex flex-col gap-12"></div>
+        
+        <div class="mt-16 text-center reveal">
+            <a href="#" target="_blank" class="wa-link inline-flex items-center text-primary font-bold text-lg hover:text-secondary transition-colors group">
+                Konsultasikan Desain Anda <i class="ph-bold ph-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="py-24 bg-textMain text-white px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#6C63FF 1px, transparent 1px); background-size: 32px 32px;"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Proses Mudah & Transparan</h2>
+                <p class="text-gray-400 text-lg">Dari ide menjadi visual memukau hanya dalam 3 langkah sederhana.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative reveal">
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-primary via-secondary to-accent opacity-50"></div>
+                <div class="relative text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 rounded-3xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 shadow-2xl group-hover:border-primary transition-colors duration-300 hover-lift">
+                        <i class="ph-fill ph-file-text text-4xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <div class="absolute -top-3 -right-3 w-8 h-8 bg-primary rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Kirim Brief</h3><p class="text-gray-400">Jelaskan kebutuhan desain Anda via form atau chat WhatsApp.</p>
+                </div>
+                <div class="relative text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 rounded-3xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 shadow-2xl group-hover:border-secondary transition-colors duration-300 hover-lift">
+                        <i class="ph-fill ph-credit-card text-4xl text-gray-300 group-hover:text-secondary transition-colors"></i>
+                        <div class="absolute -top-3 -right-3 w-8 h-8 bg-secondary rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Pembayaran</h3><p class="text-gray-400">Selesaikan administrasi, lalu tim kami langsung mengeksekusi.</p>
+                </div>
+                <div class="relative text-center group">
+                    <div class="w-24 h-24 mx-auto bg-gray-800 rounded-3xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 shadow-2xl group-hover:border-accent transition-colors duration-300 hover-lift">
+                        <i class="ph-fill ph-paper-plane-tilt text-4xl text-gray-300 group-hover:text-accent transition-colors"></i>
+                        <div class="absolute -top-3 -right-3 w-8 h-8 bg-accent text-textMain rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Desain Dikirim</h3><p class="text-gray-400">Terima file master berkualitas tinggi, dan ajukan revisi jika perlu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (API Driven) -->
+    <section id="harga" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="max-w-3xl mx-auto mb-16 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 border border-primary/20 rounded-full py-4 px-6 text-center reveal shadow-sm hover-lift">
+            <span class="text-textMain font-bold text-sm md:text-base flex items-center justify-center flex-wrap gap-1">
+                <span class="text-xl">✨</span> 500+ desain telah dikirim ke berbagai bisnis di Indonesia
+            </span>
+        </div>
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+            <div class="section-heading-container">
+                <div class="heading-glow-bg"></div>
+                <span class="section-label block">Pricing Plan</span>
+                <h2 class="section-title"><span class="editorial-font">Harga</span> Transparan</h2>
+                <div class="heading-divider"></div>
+            </div>
+            <p class="text-gray-600 text-lg font-medium">Pilih paket yang paling sesuai dengan volume kebutuhan visual bisnis Anda.</p>
+        </div>
+        <div id="pricing-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            <!-- Rendered via JS -->
+        </div>
+    </section>
+
+    <!-- Testimonial Section (API Driven) -->
+    <section class="py-24 bg-surface px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <div class="section-heading-container">
+                    <div class="heading-glow-bg"></div>
+                    <span class="section-label block">Client Stories</span>
+                    <h2 class="section-title"><span class="editorial-font">Dipercaya</span> Klien Kami</h2>
+                    <div class="heading-divider"></div>
+                </div>
+                <p class="text-gray-600 text-lg font-medium">Kualitas hasil yang berbicara. Berikut pengalaman mereka menggunakan jasa kami.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="testimonial-grid"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (API Driven) -->
+    <section id="faq" class="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <div class="section-heading-container">
+                <div class="heading-glow-bg"></div>
+                <span class="section-label block">Frequently Asked Questions</span>
+                <h2 class="section-title"><span class="editorial-font">FAQ</span></h2>
+                <div class="heading-divider"></div>
+            </div>
+            <p class="text-gray-600 text-lg font-medium">Pertanyaan yang paling sering ditanyakan calon pelanggan.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal" id="faq-container"></div>
+    </section>
+
+    <!-- Free Consultation / Lead Capture Section -->
+    <section id="konsultasi" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 reveal">
+        <div class="glass-card border border-primary/20 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-2xl">
+            <!-- Background effects -->
+            <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-primary opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-accent opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+            
+            <div class="text-center mb-10 relative z-10">
+                <div class="section-heading-container mb-4">
+                    <span class="section-label block justify-center">Free Consultation</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-textMain tracking-tight"><span class="editorial-font">Konsultasi</span> Gratis</h2>
+                </div>
+                <p class="text-gray-600 font-medium">Ceritakan kebutuhan desain Anda. Tim kami akan menghubungi Anda melalui WhatsApp.</p>
+            </div>
+
+            <form id="lead-form" class="relative z-10 space-y-6 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="lead-name" class="block text-sm font-bold text-textMain mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="lead-name" name="name" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div>
+                        <label for="lead-whatsapp" class="block text-sm font-bold text-textMain mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                        <!-- PATCH v1.2: Memastikan type="tel" alih-alih number agar nol di depan tidak hilang -->
+                        <input type="tel" id="lead-whatsapp" name="whatsapp" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="Contoh: 081234567890">
+                    </div>
+                </div>
+                <div>
+                    <label for="lead-service" class="block text-sm font-bold text-textMain mb-2">Layanan Yang Dibutuhkan <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <select id="lead-service" name="service" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                            <option value="" disabled selected>Pilih Layanan</option>
+                            <option value="Logo Design">Logo Design</option>
+                            <option value="Social Media Design">Social Media Design</option>
+                            <option value="Banner Design">Banner Design</option>
+                            <option value="Packaging Design">Packaging Design</option>
+                            <option value="Company Profile">Company Profile</option>
+                            <option value="Landing Page Design">Landing Page Design</option>
+                            <option value="Custom Design">Custom Design</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                            <i class="ph-bold ph-caret-down text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="lead-notes" class="block text-sm font-bold text-textMain mb-2">Catatan Kebutuhan <span class="text-gray-400 text-xs font-normal">(Opsional)</span></label>
+                    <textarea id="lead-notes" name="notes" rows="4" class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 resize-none" placeholder="Ceritakan lebih detail tentang bisnis dan kebutuhan visual Anda..."></textarea>
+                </div>
+                <div class="pt-4 text-center">
+                    <button type="submit" id="submit-lead-btn" class="inline-flex items-center justify-center w-full md:w-auto bg-gradient-primary hover:bg-gradient-hover text-white px-10 py-4 rounded-full font-bold text-lg magnetic-btn cta-btn-glow disabled:opacity-70 disabled:cursor-not-allowed transition-all">
+                        <span id="submit-lead-text">Kirim Konsultasi Gratis</span>
+                        <i class="ph-bold ph-paper-plane-tilt ml-2" id="submit-lead-icon"></i>
+                        <svg id="submit-lead-spinner" class="animate-spin ml-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-textMain"></div>
+        <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-textMain via-textMain/80 to-textMain/40"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
+            <div class="cta-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="section-heading-container flex flex-col items-center">
+                <div class="heading-glow-bg" style="opacity: 0.08;"></div>
+                <span class="section-label block text-center">READY TO GROW</span>
+                <h2 class="section-title cta-section-title text-4xl md:text-6xl font-extrabold mb-0 tracking-tight" style="color: #FFFFFF !important;">
+                    Siap Meningkatkan<br><span class="cta-editorial">Tampilan Bisnis Anda?</span>
+                </h2>
+                <div class="heading-divider"></div>
+            </div>
+            
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-medium">Investasikan pada visual yang memukau. Pesan desain profesional sekarang juga dan amankan slot pengerjaan Anda.</p>
+            <a href="#" target="_blank" class="wa-link inline-flex items-center bg-white text-textMain px-10 py-5 rounded-full font-extrabold text-lg magnetic-btn cta-btn-glow">
+                Pesan Sekarang <i class="ph-bold ph-arrow-right ml-3 text-xl text-primary"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface pt-20 pb-8 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="" alt="Logo" class="h-14 image-fade loaded logo-img" loading="lazy" decoding="async">
+                        <span id="footer-brand" class="font-black text-[30px] sm:text-[34px] md:text-[40px] up2design-gradient-text logo-text tracking-tight logo-fallback">UP2Design AI</span>
+                    </div>
+                    <p id="footer-tagline" class="text-base text-gray-600 mb-8 max-w-md font-medium tagline-text">Desain Profesional Untuk Bisnis Modern. Kualitas visual kelas agency untuk menaikkan level brand Anda.</p>
+                    
+                    <!-- DYNAMIC SOCIAL MEDIA CONTAINER -->
+                    <div class="flex space-x-5 flex-wrap gap-y-4" id="footer-social-container">
+                        <!-- Rendered via JS -->
+                    </div>
+
+                </div>
+                <div>
+                    <h4 class="font-bold text-textMain text-lg mb-6">Menu Footer</h4>
+                    <ul class="space-y-3 font-medium text-gray-600">
+                        <li><a href="#beranda" class="hover:text-primary transition-colors">Beranda</a></li>
+                        <li><a href="#layanan" class="hover:text-primary transition-colors">Layanan</a></li>
+                        <li><a href="#portfolio" class="hover:text-primary transition-colors">Portfolio</a></li>
+                        <li><a href="#harga" class="hover:text-primary transition-colors">Harga</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-textMain text-lg mb-6">Contact</h4>
+                    <ul class="space-y-4 font-medium text-gray-600">
+                        <li class="flex items-start" id="footer-wa-container"><i class="ph-fill ph-whatsapp text-xl mr-3 text-green-500"></i> <a href="#" target="_blank" class="hover:text-primary transition-colors wa-link">Chat WhatsApp</a></li>
+                        <li class="flex items-start" id="footer-email-container"><i class="ph-fill ph-envelope text-xl mr-3 text-primary"></i> <span id="footer-email">hello@up2design.ai</span></li>
+                        <li class="flex items-start" id="footer-phone-container"><i class="ph-fill ph-phone text-xl mr-3 text-indigo-500"></i> <span id="footer-phone">0812-3456-7890</span></li>
+                        <li class="flex items-start" id="footer-address-container"><i class="ph-fill ph-map-pin text-xl mr-3 text-secondary"></i> <span id="footer-address">Jakarta, Indonesia</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8 text-center text-[15px] font-medium text-gray-500 flex flex-col items-center justify-center gap-2">
+                <p id="footer-text">&copy; 2026 UP2Design AI.</p>
+                <p>Part of <br class="md:hidden"/> <a href="#" target="_blank" class="ecosystem-link wa-link">UP2Digital Ecosystem</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==============================================
+         API DRIVEN ENGINE (JAVASCRIPT)
+         ============================================== -->
+    <script>
+        // --- PATCH A & B: CONFIG ENGINE & BOOT ENGINE ---
+        window.CONFIG = {
+            gas_api_url: "https://script.google.com/macros/s/AKfycbx8g9i-zwDYlDmHrW2pOjf9VgTbj6s7CEvFPPWHRyX9Bqf8jDG9CsI81O-Inflqn5mR/exec"
+        };
+        window.API_URL = window.CONFIG.gas_api_url;
+
+        // Global Variable Fallback Image
+        const premiumPlaceholder = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22 viewBox=%220 0 800 800%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%236C63FF%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%2322D3EE%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22800%22 height=%22800%22 fill=%22url(%23g)%22/%3E%3Ctext x=%22400%22 y=%22380%22 font-family=%22Arial, sans-serif%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 font-weight=%22bold%22%3E✨%3C/text%3E%3Ctext x=%22400%22 y=%22440%22 font-family=%22Arial, sans-serif%22 font-size=%2240%22 fill=%22white%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EUP2Design AI%3C/text%3E%3Ctext x=%22400%22 y=%22490%22 font-family=%22Arial, sans-serif%22 font-size=%2224%22 fill=%22rgba(255,255,255,0.8)%22 text-anchor=%22middle%22%3EPortfolio Preview%3C/text%3E%3C/svg%3E";
+        const imgErrorHandler = `this.onerror=null;this.src='${premiumPlaceholder}';this.classList.add('loaded');`;
+
+        // App State Array
+        let logoImages = [];
+        let bannerImages = [];
+        let thumbnailImages = [];
+        let adsImages = [];
+        let socialImages = [];
+
+        // Engine Configuration Map
+        let gridConfig = {
+            'logo': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-square', data: [], label: 'Logo Design', labels: [] },
+            'banner': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-[9/16]', data: [], label: 'Banner Design', labels: [] },
+            'thumbnail': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-video', data: [], label: 'YouTube Thumbnail', labels: [] },
+            'ads': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-[4/5]', data: [], label: 'Ads Creative', labels: [] },
+            'social': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-square', data: [], label: 'Social Media', labels: [] }
+        };
+
+        // Fallback Default Settings ONLY (Tidak menggunakan array hardcoded untuk isi data demi mematuhi PATCH)
+        const defaultSettings = {
+            site_name: "UP2Design AI",
+            tagline: "Desain Profesional Untuk Bisnis Modern",
+            logo_url: "https://up2digi-app.github.io/up2digital-assets/up2designai/logo.png",
+            favicon_url: "https://up2digi-app.github.io/up2digital-assets/up2designai/favicon.ico",
+            whatsapp_link: "#",
+            contact_email: "hello@up2design.ai",
+            contact_phone: "0812-3456-7890",
+            contact_address: "Jakarta, Indonesia",
+            footer_brand: "UP2Design AI",
+            footer_tagline: "Desain Profesional Untuk Bisnis Modern. Kualitas visual kelas agency untuk menaikkan level brand Anda.",
+            footer_text: "© 2026 UP2Design AI."
+        };
+
+        // --- 1. SKELETON STATE ---
+        function showSkeletons() {
+            const skeletonCard = `<div class="bg-white rounded-[2rem] border border-gray-200 p-8 skeleton h-[450px]"></div>`;
+            document.getElementById('pricing-grid').innerHTML = skeletonCard.repeat(3);
+            
+            const skeletonTesti = `<div class="bg-white p-6 rounded-3xl border border-gray-100 skeleton h-48"></div>`;
+            document.getElementById('testimonial-grid').innerHTML = skeletonTesti.repeat(4);
+            
+            const skeletonFaq = `<div class="border border-gray-200 rounded-2xl bg-white skeleton h-16 mb-4"></div>`;
+            document.getElementById('faq-container').innerHTML = skeletonFaq.repeat(4);
+            
+            const skeletonPort = `<div class="aspect-square rounded-2xl skeleton bg-gray-200 w-full"></div>`;
+            document.getElementById('portfolio-grid').innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">${skeletonPort.repeat(6)}</div>`;
+            
+            const skeletonSocial = `<div class="w-10 h-10 rounded-full skeleton bg-white border border-gray-200"></div>`;
+            const socialContainer = document.getElementById('footer-social-container');
+            if(socialContainer) socialContainer.innerHTML = skeletonSocial.repeat(3);
+        }
+
+        // --- PATCH F: ERROR HANDLING STATE ---
+        function showErrorState() {
+            const errorMsg = `<div class="col-span-full text-center py-12 text-gray-500 font-medium w-full">Data sementara tidak tersedia</div>`;
+            
+            // Tampilkan error ke area list tanpa merusak layout luar (PATCH F)
+            document.getElementById('pricing-grid').innerHTML = errorMsg;
+            document.getElementById('testimonial-grid').innerHTML = errorMsg;
+            document.getElementById('faq-container').innerHTML = errorMsg;
+            document.getElementById('portfolio-grid').innerHTML = errorMsg;
+            
+            const socialContainer = document.getElementById('footer-social-container');
+            if(socialContainer) socialContainer.innerHTML = '';
+            
+            // Biarkan UI Hero dan Why Choose Us fallback ke placeholder agar estetik layout terjaga (PATCH G)
+            initHeroAndWhyChooseUs();
+            initMarquee();
+
+            reveal();
+        }
+
+        // --- 2. FETCH DATA DARI API (PATCH B, C, D, E) ---
+        async function initApp() {
+            try {
+                showSkeletons();
+                
+                if (!window.API_URL || !window.API_URL.startsWith('http')) {
+                    throw new Error("Invalid API URL");
+                }
+
+                // Helper fetcher
+                const fetchJson = async (url) => {
+                    const res = await fetch(url);
+                    if (!res.ok) throw new Error("HTTP " + res.status);
+                    return res.json();
+                };
+
+                // Ambil API secara paralel untuk C, D, E
+                const [reqAll, reqSocial, reqPricing, reqPricingFeat] = await Promise.allSettled([
+                    fetchJson(window.API_URL + "?action=all"),
+                    fetchJson(window.API_URL + "?action=social"),
+                    fetchJson(window.API_URL + "?action=pricing"),
+                    fetchJson(window.API_URL + "?action=pricing_features")
+                ]);
+
+                // Jika Endpoint utama mati, nyalakan Error Handler (PATCH F)
+                if (reqAll.status === 'rejected' || !reqAll.value?.success) {
+                    throw new Error("Main API failed or returned false");
+                }
+
+                const data = reqAll.value.data || {};
+
+                // PATCH D: Override/Assign data social dari endpoint ?action=social
+                if (reqSocial.status === 'fulfilled' && reqSocial.value?.success) {
+                    data.social = reqSocial.value.data;
+                }
+
+                // PATCH E: Override/Assign Pricing dan gabungkan feature
+                if (reqPricing.status === 'fulfilled' && reqPricing.value?.success) {
+                    const pricingData = reqPricing.value.data;
+                    let featuresData = [];
+                    
+                    if (reqPricingFeat.status === 'fulfilled' && reqPricingFeat.value?.success) {
+                        featuresData = reqPricingFeat.value.data;
+                    }
+                    
+                    // Map Dynamic Pricing Features
+                    data.pricing = pricingData.map(pkg => {
+                        const matchedFeatures = featuresData.filter(f => String(f.package_name).trim().toLowerCase() === String(pkg.package_name).trim().toLowerCase());
+                        
+                        if (matchedFeatures.length > 0) {
+                            // Urutkan dan ambil list fitur
+                            pkg.features = matchedFeatures
+                                .sort((a,b) => (a.sort_order||0) - (b.sort_order||0))
+                                .map(f => f.feature);
+                        } else if (typeof pkg.features === 'string') {
+                            // Fallback jika API pricing me-return comma-separated (backward compatibility)
+                            pkg.features = pkg.features.split(',').map(s => s.trim());
+                        } else if (!pkg.features) {
+                            pkg.features = [];
+                        }
+                        return pkg;
+                    });
+                }
+
+                renderData(data);
+
+            } catch (error) {
+                console.warn("API Fetch Error:", error);
+                showErrorState();
+            }
+        }
+
+        // --- 3. RENDER ALL DATA ---
+        function renderData(data) {
+            renderSettings(data.settings || {});
+            processPortfolio(data.portfolio || []);
+            processPricing(data.pricing || []);
+            processFaq(data.faq || []);
+            processTestimonial(data.testimonial || []);
+            processSocial(data.social || []);
+            
+            initHeroAndWhyChooseUs();
+            initMarquee();
+            renderPortfolio('semua');
+            
+            // Re-trigger animasi kemunculan elemen
+            reveal();
+        }
+
+        // --- 4. PROCESS DATA FUNGSI UTAMA ---
+        // PATCH C: Dynamic Settings
+        function renderSettings(settings) {
+            const site_name = settings.site_name || defaultSettings.site_name;
+            const tagline = settings.tagline || defaultSettings.tagline;
+            const logo_url = settings.logo_url || defaultSettings.logo_url;
+            const favicon_url = settings.favicon_url || defaultSettings.favicon_url;
+            
+            const footer_brand = settings.footer_brand || site_name || defaultSettings.footer_brand;
+            const footer_tagline = settings.footer_tagline || tagline || defaultSettings.footer_tagline;
+            const footer_text = settings.footer_text || defaultSettings.footer_text;
+
+            const contact_email = settings.contact_email !== undefined ? settings.contact_email : defaultSettings.contact_email;
+            const contact_phone = settings.contact_phone !== undefined ? settings.contact_phone : defaultSettings.contact_phone;
+            const contact_address = settings.contact_address !== undefined ? settings.contact_address : defaultSettings.contact_address;
+            const whatsapp_link = settings.whatsapp_link !== undefined ? settings.whatsapp_link : (settings.whatsapp_number ? `https://wa.me/${settings.whatsapp_number}` : defaultSettings.whatsapp_link);
+            
+            document.title = site_name + (tagline ? ` | ${tagline}` : '');
+            
+            document.querySelectorAll('.logo-text:not(#footer-brand)').forEach(el => el.textContent = site_name);
+            document.querySelectorAll('.tagline-text:not(#footer-tagline)').forEach(el => el.textContent = tagline);
+            document.querySelectorAll('.logo-img').forEach(el => el.src = logo_url);
+            
+            const faviconEl = document.getElementById('favicon');
+            if(faviconEl) faviconEl.href = favicon_url;
+
+            const waContainer = document.getElementById('footer-wa-container');
+            if (whatsapp_link && whatsapp_link.trim() !== '') {
+                document.querySelectorAll('.wa-link').forEach(el => el.href = whatsapp_link);
+                if(waContainer) waContainer.style.display = 'flex';
+            } else {
+                document.querySelectorAll('.wa-link').forEach(el => el.href = '#');
+                if(waContainer) waContainer.style.display = 'none';
+            }
+
+            const footerBrandEl = document.getElementById('footer-brand');
+            if(footerBrandEl) footerBrandEl.textContent = footer_brand;
+            
+            const footerTaglineEl = document.getElementById('footer-tagline');
+            if(footerTaglineEl) footerTaglineEl.textContent = footer_tagline;
+            
+            const footerTextEl = document.getElementById('footer-text');
+            if(footerTextEl) footerTextEl.innerHTML = footer_text;
+
+            const emailEl = document.getElementById('footer-email');
+            const emailContainer = document.getElementById('footer-email-container');
+            if (contact_email && contact_email.trim() !== '') {
+                if(emailEl) emailEl.textContent = contact_email;
+                if(emailContainer) emailContainer.style.display = 'flex';
+            } else {
+                if(emailContainer) emailContainer.style.display = 'none';
+            }
+
+            const phoneEl = document.getElementById('footer-phone');
+            const phoneContainer = document.getElementById('footer-phone-container');
+            if (contact_phone && contact_phone.trim() !== '') {
+                if(phoneEl) phoneEl.textContent = contact_phone;
+                if(phoneContainer) phoneContainer.style.display = 'flex';
+            } else {
+                if(phoneContainer) phoneContainer.style.display = 'none';
+            }
+
+            const addressEl = document.getElementById('footer-address');
+            const addressContainer = document.getElementById('footer-address-container');
+            if (contact_address && contact_address.trim() !== '') {
+                if(addressEl) addressEl.textContent = contact_address;
+                if(addressContainer) addressContainer.style.display = 'flex';
+            } else {
+                if(addressContainer) addressContainer.style.display = 'none';
+            }
+        }
+
+        // PATCH D: Dynamic Social Media
+        function processSocial(data) {
+            const container = document.getElementById('footer-social-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            if (!data || !Array.isArray(data) || data.length === 0) {
+                // Biarkan kosong jika tidak ada sosmed aktif
+                return;
+            }
+            
+            const activeSocials = data
+                .filter(item => item.active === true || String(item.active).toLowerCase() === 'true' || item.active === 1 || String(item.active) === '1')
+                .sort((a, b) => parseInt(a.sort_order || 0) - parseInt(b.sort_order || 0));
+                
+            activeSocials.forEach(social => {
+                container.innerHTML += `
+                    <a href="${social.url || '#'}" target="_blank" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary social-icon" title="${social.platform || ''}">
+                        <i class="ph-fill ${social.icon} text-xl"></i>
+                    </a>
+                `;
+            });
+        }
+
+        function processPortfolio(data) {
+            if (!data || data.length === 0) {
+                document.getElementById('portfolio-grid').innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-medium">Data sementara tidak tersedia</div>`;
+                return;
+            }
+
+            const getImg = (url) => {
+                if (!url || url === "REPLACE_IMAGE_URL" || url.trim() === "") return premiumPlaceholder;
+                return url;
+            };
+
+            logoImages = data.filter(i => i.category.toLowerCase() === 'logo').map(i => getImg(i.image_url));
+            bannerImages = data.filter(i => i.category.toLowerCase() === 'banner').map(i => getImg(i.image_url));
+            thumbnailImages = data.filter(i => i.category.toLowerCase() === 'thumbnail').map(i => getImg(i.image_url));
+            adsImages = data.filter(i => i.category.toLowerCase() === 'ads').map(i => getImg(i.image_url));
+            socialImages = data.filter(i => i.category.toLowerCase() === 'social').map(i => getImg(i.image_url));
+            
+            gridConfig.logo.data = logoImages;
+            gridConfig.logo.labels = data.filter(i => i.category.toLowerCase() === 'logo').map(i => i.title);
+            gridConfig.banner.data = bannerImages;
+            gridConfig.banner.labels = data.filter(i => i.category.toLowerCase() === 'banner').map(i => i.title);
+            gridConfig.thumbnail.data = thumbnailImages;
+            gridConfig.thumbnail.labels = data.filter(i => i.category.toLowerCase() === 'thumbnail').map(i => i.title);
+            gridConfig.ads.data = adsImages;
+            gridConfig.ads.labels = data.filter(i => i.category.toLowerCase() === 'ads').map(i => i.title);
+            gridConfig.social.data = socialImages;
+            gridConfig.social.labels = data.filter(i => i.category.toLowerCase() === 'social').map(i => i.title);
+        }
+
+        // PATCH E: Rendering Dynamic Pricing with Features
+        function processPricing(data) {
+            const grid = document.getElementById('pricing-grid');
+            grid.innerHTML = '';
+            
+            if (!data || data.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-medium w-full">Data sementara tidak tersedia</div>`;
+                return;
+            }
+
+            data.forEach((pkg) => {
+                const isFeatured = String(pkg.featured).toLowerCase() === 'true';
+                const baseClass = isFeatured ? 'bg-textMain text-white transform lg:-translate-y-4 relative z-10 overflow-hidden pricing-business' : 'bg-white rounded-[2rem] border border-gray-200 pricing-card';
+                
+                let featuresHtml = '';
+                if (pkg.features && Array.isArray(pkg.features)) {
+                    pkg.features.forEach(f => {
+                        const iconColor = isFeatured ? 'text-accent' : 'text-primary';
+                        const textColor = isFeatured ? 'text-gray-200' : 'text-gray-700';
+                        featuresHtml += `<li class="flex items-center ${textColor}"><i class="ph-bold ph-check ${iconColor} mr-3 text-lg"></i> ${f}</li>`;
+                    });
+                }
+                
+                grid.innerHTML += `
+                    <div class="p-8 reveal ${baseClass} rounded-[2rem]">
+                        ${isFeatured ? '<div class="absolute top-0 right-0 bg-gradient-primary text-white text-xs font-bold uppercase tracking-widest py-2 px-6 rounded-bl-2xl">Best Seller</div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/20 blur-[80px] pointer-events-none"></div>' : ''}
+                        <h3 class="text-2xl font-bold ${isFeatured ? 'text-white relative z-10' : 'text-textMain'} mb-2">${pkg.package_name}</h3>
+                        <p class="${isFeatured ? 'text-gray-400 relative z-10' : 'text-gray-500'} text-sm mb-6">${pkg.description}</p>
+                        <div class="mb-8 ${isFeatured ? 'relative z-10' : ''}"><span class="text-4xl lg:text-5xl font-black ${isFeatured ? 'text-white' : 'text-textMain'}">${pkg.price}</span></div>
+                        <ul class="space-y-4 mb-8 font-medium ${isFeatured ? 'relative z-10' : ''}">
+                            ${featuresHtml}
+                        </ul>
+                        <a href="${pkg.button_link || '#'}" target="_blank" class="block w-full text-center font-bold py-4 rounded-xl transition-all ${isFeatured ? 'bg-gradient-primary hover:bg-gradient-hover text-white shadow-[0_4px_20px_0_rgba(108,99,255,0.4)] hover:scale-105 relative z-10' : 'bg-gray-50 hover:bg-gray-100 text-textMain border border-gray-200'} ${!pkg.button_link ? 'wa-link' : ''}">${pkg.button_text || 'Pesan Sekarang'}</a>
+                    </div>
+                `;
+            });
+        }
+
+        function processFaq(data) {
+            const container = document.getElementById('faq-container');
+            container.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-medium w-full">Data sementara tidak tersedia</div>`;
+                return;
+            }
+
+            data.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="border border-gray-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-primary/50 shadow-sm self-start hover-lift">
+                        <button class="w-full px-8 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(${index})">
+                            <span class="font-bold text-textMain text-[15px] pr-4">${item.question}</span>
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface flex items-center justify-center">
+                                <i class="ph-bold ph-caret-down text-primary transition-transform duration-300" id="faq-icon-${index}"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-8 pb-6 pt-0 text-gray-600 text-sm leading-relaxed font-medium" id="faq-content-${index}">${item.answer}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function processTestimonial(data) {
+            const grid = document.getElementById('testimonial-grid');
+            grid.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 font-medium w-full">Data sementara tidak tersedia</div>`;
+                return;
+            }
+
+            data.forEach((testi, i) => {
+                let avatar = testi.avatar_url;
+                if (!avatar || avatar === "AVATAR_URL" || avatar.trim() === "") {
+                    avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(testi.name)}&background=F8FAFC&color=6C63FF`;
+                }
+
+                let stars = '';
+                let rating = parseInt(testi.rating) || 5;
+                for(let j=0; j<rating; j++) stars += '<i class="ph-fill ph-star"></i>';
+                
+                grid.innerHTML += `
+                    <div class="bg-white p-6 rounded-3xl border border-gray-100 reveal testi-card" style="transition-delay: ${(i%4)*50}ms">
+                        <div class="flex text-yellow-400 mb-4 text-lg">${stars}</div>
+                        <p class="text-gray-700 mb-6 font-medium leading-relaxed text-sm">"${testi.review}"</p>
+                        <div class="flex items-center mt-auto">
+                            <div class="skeleton rounded-full w-10 h-10 mr-3 border-2 border-surface bg-surface overflow-hidden">
+                                <img src="${avatar}" alt="${testi.name}" class="w-full h-full object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(testi.name)}&background=F8FAFC&color=6C63FF';this.classList.add('loaded');">
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-textMain text-sm">${testi.name}</h5>
+                                <p class="text-xs text-primary font-bold">${testi.company}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // --- 5. RENDER ELEMENT DINAMIS LAINNYA ---
+        function initHeroAndWhyChooseUs() {
+            const heroGrid = document.getElementById('hero-grid');
+            const whyChooseGrid = document.getElementById('why-choose-grid');
+            heroGrid.innerHTML = ''; whyChooseGrid.innerHTML = '';
+            
+            const sLogo = logoImages[0] || premiumPlaceholder;
+            const sBanner = bannerImages[0] || premiumPlaceholder;
+            const sThumb = thumbnailImages[0] || premiumPlaceholder;
+            const sAds = adsImages[0] || premiumPlaceholder;
+
+            const heroItems = [
+                { src: sLogo, label: 'Logo Design', icon: 'ph-bezier-curve', color: 'text-primary', delay: '0s' },
+                { src: sBanner, label: 'Banner Design', icon: 'ph-presentation-chart', color: 'text-secondary', delay: '1.2s' },
+                { src: sThumb, label: 'Thumbnail', icon: 'ph-youtube-logo', color: 'text-accent', delay: '2.4s' },
+                { src: sAds, label: 'Ads Creative', icon: 'ph-megaphone', color: 'text-primary', delay: '0.6s' }
+            ];
+
+            heroItems.forEach((item, idx) => {
+                const mtClass = (idx === 1) ? 'mt-8' : (idx === 2) ? '-mt-8' : '';
+                heroGrid.innerHTML += `
+                    <div class="glass-card aspect-square rounded-3xl p-2 relative group overflow-hidden animate-micro-float skeleton ${mtClass}" style="animation-delay: ${item.delay}; transition: transform 0.3s ease;">
+                        <img src="${item.src}" alt="${item.label}" class="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700 image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
+                        <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-textMain shadow-lg flex items-center border border-white/50 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                            <i class="ph-fill ${item.icon} ${item.color} mr-2"></i> ${item.label}
+                        </div>
+                    </div>
+                `;
+            });
+
+            const wcImages = [logoImages[1]||sLogo, bannerImages[1]||sBanner, thumbnailImages[1]||sThumb, adsImages[1]||sAds];
+            wcImages.forEach((img, idx) => {
+                const marginClass = (idx === 1) ? 'mt-8' : (idx === 2) ? '-mt-8' : '';
+                whyChooseGrid.innerHTML += `
+                    <div class="animate-micro-float w-full aspect-square relative z-10 skeleton rounded-3xl ${marginClass}" style="animation-delay: ${idx * 1.5}s;">
+                        <img src="${img}" class="rounded-3xl w-full h-full object-cover shadow-lg transition-all duration-1000 ease-in-out border border-transparent image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
+                    </div>
+                `;
+            });
+            updateWcState();
+        }
+
+        function initMarquee() {
+            const row1 = document.getElementById('marquee-row-1');
+            const row3 = document.getElementById('marquee-row-3');
+            row1.innerHTML = ''; row3.innerHTML = '';
+            
+            const logos = logoImages.length ? logoImages : Array(20).fill(premiumPlaceholder);
+            const logosToRender = [
+                ...logos.slice(0, 20),
+                ...logos.slice(0, 20)
+            ];
+            logosToRender.forEach(src => {
+                row1.innerHTML += `<div class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 bg-white rounded-3xl shadow-sm border border-gray-100 p-2 group hover:shadow-md transition-all skeleton"><img src="${src}" class="w-full h-full rounded-2xl object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}"></div>`;
+            });
+
+            const banners = bannerImages.length ? bannerImages : Array(20).fill(premiumPlaceholder);
+            const bannersToRender = [
+                ...banners.slice(0, 20),
+                ...banners.slice(0, 20)
+            ];
+            bannersToRender.forEach(src => {
+                row3.innerHTML += `<div class="flex-shrink-0 w-40 md:w-48 aspect-[9/16] bg-gray-200 rounded-2xl overflow-hidden relative group border border-gray-100 shadow-sm skeleton"><img src="${src}" class="w-full h-full object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}"></div>`;
+            });
+        }
+
+        function generatePortfolioItems(type, count) {
+            const conf = gridConfig[type];
+            const items = conf.data.slice(0, count);
+            
+            return items.map((src, idx) => {
+                const subLabel = conf.labels && conf.labels[idx] ? conf.labels[idx] : `${conf.label} ${idx + 1}`;
+                return `
+                    <div class="${conf.aspect} portfolio-card group cursor-pointer skeleton">
+                        <div class="portfolio-card-border"></div>
+                        <img src="${src}" alt="${subLabel}" class="w-full h-full object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-10">
+                            <div class="portfolio-info w-full">
+                                <span class="text-primary font-bold text-xs uppercase tracking-widest mb-2 block">${type}</span>
+                                <h4 class="text-white font-bold text-xl md:text-2xl leading-tight mb-4">${subLabel}</h4>
+                                <div class="inline-flex items-center text-white text-sm font-semibold gap-2 border-b border-white/30 pb-1 hover:border-white transition-colors cursor-pointer">
+                                    View Design <i class="ph-bold ph-arrow-up-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderPortfolio(filter) {
+            const gridContainer = document.getElementById('portfolio-grid');
+            if(document.querySelector('.col-span-full.text-center.py-12')) {
+                // Jangan reset grid jika sedang mode error state
+                return;
+            }
+            gridContainer.innerHTML = '';
+            
+            if (filter === 'semua') {
+                const order = ['logo', 'banner', 'thumbnail', 'ads', 'social'];
+                let finalHTML = '';
+                order.forEach(type => {
+                    const conf = gridConfig[type];
+                    if(conf.data.length > 0) {
+                        finalHTML += `
+                            <div class="w-full mb-4 animate-fade-in">
+                                <h3 class="section-header text-xl font-bold text-textMain mb-6">${conf.label}</h3>
+                                <div class="grid gap-6 ${conf.cols}">${generatePortfolioItems(type, 3)}</div>
+                            </div>
+                        `;
+                    }
+                });
+                gridContainer.innerHTML = finalHTML || '<div class="text-center py-8">Portfolio belum tersedia.</div>';
+            } else {
+                const conf = gridConfig[filter];
+                if(conf.data.length > 0) {
+                    let targetCount = filter === 'social' ? 8 : 6;
+                    gridContainer.innerHTML = `<div class="grid gap-6 ${conf.cols} w-full animate-fade-in">${generatePortfolioItems(filter, targetCount)}</div>`;
+                } else {
+                    gridContainer.innerHTML = '<div class="text-center py-8">Portfolio kategori ini belum tersedia.</div>';
+                }
+            }
+        }
+
+        // --- UTILITY ENGINE EVENTS ---
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        let currentWcIndex = 0;
+        function updateWcState() {
+            const wcImages = document.querySelectorAll('#why-choose-grid img');
+            if(wcImages.length === 0) return;
+            wcImages.forEach((img, idx) => {
+                if (idx === currentWcIndex) {
+                    img.classList.add('wc-featured'); img.classList.remove('wc-dimmed');
+                } else {
+                    img.classList.remove('wc-featured'); img.classList.add('wc-dimmed');
+                }
+            });
+        }
+        setInterval(() => {
+            const wcImages = document.querySelectorAll('#why-choose-grid img');
+            if(wcImages.length > 0) {
+                currentWcIndex = (currentWcIndex + 1) % wcImages.length;
+                updateWcState();
+            }
+        }, 5000);
+
+        // UI Interactions
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.85)';
+            }
+        });
+
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) reveals[i].classList.add("active");
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active'); b.classList.add('bg-white', 'text-gray-600');
+                });
+                const target = e.target;
+                target.classList.remove('bg-white', 'text-gray-600');
+                target.classList.add('active');
+                renderPortfolio(target.getAttribute('data-filter'));
+            });
+        });
+
+        const glow = document.getElementById('mouseGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const max = 6;
+                const moveX = Math.max(-max, Math.min(max, (x / (rect.width / 2)) * max));
+                const moveY = Math.max(-max, Math.min(max, (y / (rect.height / 2)) * max));
+                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px) scale(1)';
+            });
+        });
+
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const isFloat = counter.getAttribute('data-float') === 'true';
+                    const duration = 2000;
+                    const frameRate = 1000 / 60;
+                    const totalFrames = Math.round(duration / frameRate);
+                    let currentFrame = 0;
+                    
+                    const updateCounter = () => {
+                        currentFrame++;
+                        const progress = currentFrame / totalFrames;
+                        const easeProgress = 1 - (1 - progress) * (1 - progress);
+                        const current = target * easeProgress;
+                        
+                        if (currentFrame < totalFrames) {
+                            counter.innerText = isFloat ? current.toFixed(1) : Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = isFloat ? target.toFixed(1) : target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // --- LEAD CAPTURE ENGINE LOGIC ---
+        const leadForm = document.getElementById('lead-form');
+        const submitBtn = document.getElementById('submit-lead-btn');
+        const submitText = document.getElementById('submit-lead-text');
+        const submitIcon = document.getElementById('submit-lead-icon');
+        const submitSpinner = document.getElementById('submit-lead-spinner');
+
+        if (leadForm) {
+            leadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('lead-name').value.trim();
+                
+                // PATCH v1.2: Memastikan whatsapp ditangkap sebagai teks biasa (string) tanpa dirubah ke Number() 
+                // Sehingga karakter 0 di awal (cth: 0812...) tidak menghilang saat di kirim ke payload.
+                const whatsapp = document.getElementById('lead-whatsapp').value.trim();
+                
+                const service = document.getElementById('lead-service').value;
+                const notes = document.getElementById('lead-notes').value.trim();
+
+                if (!name || !whatsapp || !service) {
+                    showToast('Mohon lengkapi data wajib (Nama, WhatsApp, Layanan).', 'error');
+                    return;
+                }
+
+                // Loading State
+                submitBtn.disabled = true;
+                submitText.textContent = 'Mengirim...';
+                submitIcon.classList.add('hidden');
+                submitSpinner.classList.remove('hidden');
+
+                try {
+                    if (!window.API_URL) throw new Error("API_URL not found");
+
+                    // Memasukkan raw string secara langsung ke payload JSON
+                    const payload = {
+                        name: name,
+                        whatsapp: whatsapp, 
+                        service: service,
+                        notes: notes,
+                        source: "Landing Page"
+                    };
+
+                    const res = await fetch(window.API_URL + "?action=create_lead", {
+                        method: "POST",
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await res.json();
+                    
+                    if (data.success) {
+                        showToast('Terima kasih. Tim UP2Design AI akan menghubungi Anda segera.', 'success');
+                        leadForm.reset();
+                    } else {
+                        throw new Error(data.message || 'Gagal mengirim data');
+                    }
+                } catch (error) {
+                    console.error('Lead Submit Error:', error);
+                    showToast('Gagal mengirim data. Silakan coba lagi.', 'error');
+                } finally {
+                    // Reset Loading State
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Kirim Konsultasi Gratis';
+                    submitIcon.classList.remove('hidden');
+                    submitSpinner.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- TOAST SYSTEM ---
+        function showToast(message, type = 'success') {
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'fixed bottom-6 right-6 z-[9999] flex flex-col gap-3 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            const icon = type === 'success' ? 'ph-check-circle text-green-500' : 'ph-warning-circle text-red-500';
+            const borderColor = type === 'success' ? 'border-green-100' : 'border-red-100';
+            const bgColor = type === 'success' ? 'bg-green-50' : 'bg-red-50';
+
+            toast.className = `flex items-center gap-3 p-4 rounded-xl shadow-xl border ${borderColor} bg-white transform translate-y-10 opacity-0 transition-all duration-300 ease-out pointer-events-auto min-w-[300px] max-w-sm`;
+            toast.innerHTML = `
+                <div class="flex-shrink-0 w-10 h-10 ${bgColor} rounded-full flex items-center justify-center">
+                    <i class="ph-fill ${icon} text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-sm font-bold text-textMain">${type === 'success' ? 'Berhasil' : 'Error'}</p>
+                    <p class="text-xs text-gray-500 mt-0.5">${message}</p>
+                </div>
+                <button class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none" onclick="this.parentElement.remove()">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            `;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            });
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+
+        // EXECUTE RUNTIME
+        initApp();
+
+    </script>
+</body>
+</html>
