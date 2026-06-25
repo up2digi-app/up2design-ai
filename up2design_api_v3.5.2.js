@@ -385,6 +385,38 @@ function createLead(payload) {
   }
   
   sheet.appendRow(newRow);
+  
+  // PATCH: EMAIL NOTIFICATION LEADS v1.0
+  try {
+    const subject = '🔥 Lead Baru UP2Design AI';
+    const body = 
+`Lead Baru Masuk
+Nama:
+${payload.name || '-'}
+WhatsApp:
+${payload.whatsapp || '-'}
+Layanan:
+${payload.service || '-'}
+Catatan:
+${payload.notes || '-'}
+Sumber:
+Landing Page
+Tanggal:
+${Utilities.formatDate(
+  new Date(),
+  'Asia/Jakarta',
+  'dd/MM/yyyy HH:mm:ss'
+)}`;
+    MailApp.sendEmail(
+      'digifood.id@gmail.com',
+      subject,
+      body
+    );
+  } catch(err) {
+    Logger.log('EMAIL ERROR');
+    Logger.log(err);
+  }
+  
   return { success: true, message: "Lead berhasil dikirim", lead_id: leadData.id };
 }
 
