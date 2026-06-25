@@ -276,7 +276,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-3 md:py-4">
                 <div class="flex-shrink-0 flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img class="h-20 md:h-[86px] w-auto object-contain transition-transform hover:scale-105 image-fade loaded logo-img" src="" alt="Logo" loading="lazy" decoding="async">
+                    <!-- PATCH v1.3: eager loading untuk Navbar Logo agar LCP maksimal -->
+                    <img class="h-20 md:h-[86px] w-auto object-contain transition-transform hover:scale-105 image-fade loaded logo-img" src="" alt="Logo" loading="eager" fetchpriority="high" decoding="async">
                     <div class="flex flex-col justify-center">
                         <span class="font-black text-[30px] sm:text-[34px] md:text-[40px] leading-tight tracking-tight up2design-gradient-text logo-text">UP2Design AI</span>
                         <span class="text-[13px] md:text-[15px] text-gray-500 font-semibold tracking-wide hidden sm:block mt-0.5 tagline-text">Desain Profesional Untuk Bisnis Modern</span>
@@ -654,7 +655,6 @@
                     </div>
                     <div>
                         <label for="lead-whatsapp" class="block text-sm font-bold text-textMain mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
-                        <!-- PATCH v1.2: Memastikan type="tel" alih-alih number agar nol di depan tidak hilang -->
                         <input type="tel" id="lead-whatsapp" name="whatsapp" required class="w-full bg-white/80 border border-gray-200 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="Contoh: 081234567890">
                     </div>
                 </div>
@@ -724,7 +724,8 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-4 mb-6">
-                        <img src="" alt="Logo" class="h-14 image-fade loaded logo-img" loading="lazy" decoding="async">
+                        <!-- PATCH v1.3: eager loading untuk Footer Logo Opsional -->
+                        <img src="" alt="Logo" class="h-14 image-fade loaded logo-img" loading="eager" fetchpriority="high" decoding="async">
                         <span id="footer-brand" class="font-black text-[30px] sm:text-[34px] md:text-[40px] up2design-gradient-text logo-text tracking-tight logo-fallback">UP2Design AI</span>
                     </div>
                     <p id="footer-tagline" class="text-base text-gray-600 mb-8 max-w-md font-medium tagline-text">Desain Profesional Untuk Bisnis Modern. Kualitas visual kelas agency untuk menaikkan level brand Anda.</p>
@@ -766,7 +767,6 @@
          API DRIVEN ENGINE (JAVASCRIPT)
          ============================================== -->
     <script>
-        // --- PATCH A & B: CONFIG ENGINE & BOOT ENGINE ---
         window.CONFIG = {
             gas_api_url: "https://script.google.com/macros/s/AKfycbxg5nn-GeX5h5mE58K_1FCD9m4ad3XzmBpfz5AhIQSAYdeDlbIf8Lv7L2l-C9KBsgeb/exec"
         };
@@ -783,7 +783,6 @@
         let adsImages = [];
         let socialImages = [];
 
-        // Engine Configuration Map
         let gridConfig = {
             'logo': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-square', data: [], label: 'Logo Design', labels: [] },
             'banner': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-[9/16]', data: [], label: 'Banner Design', labels: [] },
@@ -792,7 +791,6 @@
             'social': { cols: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3', aspect: 'aspect-square', data: [], label: 'Social Media', labels: [] }
         };
 
-        // Fallback Default Settings ONLY (Tidak menggunakan array hardcoded untuk isi data demi mematuhi PATCH)
         const defaultSettings = {
             site_name: "UP2Design AI",
             tagline: "Desain Profesional Untuk Bisnis Modern",
@@ -807,7 +805,30 @@
             footer_text: "© 2026 UP2Design AI."
         };
 
-        // --- 1. SKELETON STATE ---
+        // --- PATCH v1.3: PERFORMANCE --- State variable for smart hydration (DOM Diffing)
+        let currentRenderedSettings = {};
+        let lastHeroHash = "";
+        let lastMarqueeHash = "";
+
+        // --- PATCH v1.3: RENDER STATIC CONTENT FIRST ---
+        // Fungsi ini tidak memanggil API dan langsung merender hero + logo detil (0.0 detik)
+        function renderStaticContent() {
+            // Render Text, Logo, Hero dari Default Configuration
+            renderSettings(defaultSettings, true);
+            
+            // Pass `true` sebagai indikator mode 'eager' loading untuk asset visual hero utama
+            initHeroAndWhyChooseUs(true);
+            
+            // Render bagian showcase grid
+            initMarquee();
+            
+            // Render skeleton HANYA untuk section yang pure dinamis dari API di layar bagian bawah
+            showSkeletons();
+            
+            // Trigger kemunculan efek fade dari class "reveal"
+            reveal();
+        }
+
         function showSkeletons() {
             const skeletonCard = `<div class="bg-white rounded-[2rem] border border-gray-200 p-8 skeleton h-[450px]"></div>`;
             document.getElementById('pricing-grid').innerHTML = skeletonCard.repeat(3);
@@ -826,11 +847,9 @@
             if(socialContainer) socialContainer.innerHTML = skeletonSocial.repeat(3);
         }
 
-        // --- PATCH F: ERROR HANDLING STATE ---
         function showErrorState() {
             const errorMsg = `<div class="col-span-full text-center py-12 text-gray-500 font-medium w-full">Data sementara tidak tersedia</div>`;
             
-            // Tampilkan error ke area list tanpa merusak layout luar (PATCH F)
             document.getElementById('pricing-grid').innerHTML = errorMsg;
             document.getElementById('testimonial-grid').innerHTML = errorMsg;
             document.getElementById('faq-container').innerHTML = errorMsg;
@@ -839,30 +858,25 @@
             const socialContainer = document.getElementById('footer-social-container');
             if(socialContainer) socialContainer.innerHTML = '';
             
-            // Biarkan UI Hero dan Why Choose Us fallback ke placeholder agar estetik layout terjaga (PATCH G)
             initHeroAndWhyChooseUs();
             initMarquee();
 
             reveal();
         }
 
-        // --- 2. FETCH DATA DARI API (PATCH B, C, D, E) ---
         async function initApp() {
             try {
-                showSkeletons();
-                
                 if (!window.API_URL || !window.API_URL.startsWith('http')) {
                     throw new Error("Invalid API URL");
                 }
 
-                // Helper fetcher
                 const fetchJson = async (url) => {
                     const res = await fetch(url);
                     if (!res.ok) throw new Error("HTTP " + res.status);
                     return res.json();
                 };
 
-                // Ambil API secara paralel untuk C, D, E
+                // Memanggil semua endpoint secara paralel untuk optimalisasi waktu koneksi
                 const [reqAll, reqSocial, reqPricing, reqPricingFeat] = await Promise.allSettled([
                     fetchJson(window.API_URL + "?action=all"),
                     fetchJson(window.API_URL + "?action=social"),
@@ -870,19 +884,16 @@
                     fetchJson(window.API_URL + "?action=pricing_features")
                 ]);
 
-                // Jika Endpoint utama mati, nyalakan Error Handler (PATCH F)
                 if (reqAll.status === 'rejected' || !reqAll.value?.success) {
                     throw new Error("Main API failed or returned false");
                 }
 
                 const data = reqAll.value.data || {};
 
-                // PATCH D: Override/Assign data social dari endpoint ?action=social
                 if (reqSocial.status === 'fulfilled' && reqSocial.value?.success) {
                     data.social = reqSocial.value.data;
                 }
 
-                // PATCH E: Override/Assign Pricing dan gabungkan feature
                 if (reqPricing.status === 'fulfilled' && reqPricing.value?.success) {
                     const pricingData = reqPricing.value.data;
                     let featuresData = [];
@@ -891,17 +902,14 @@
                         featuresData = reqPricingFeat.value.data;
                     }
                     
-                    // Map Dynamic Pricing Features
                     data.pricing = pricingData.map(pkg => {
                         const matchedFeatures = featuresData.filter(f => String(f.package_name).trim().toLowerCase() === String(pkg.package_name).trim().toLowerCase());
                         
                         if (matchedFeatures.length > 0) {
-                            // Urutkan dan ambil list fitur
                             pkg.features = matchedFeatures
                                 .sort((a,b) => (a.sort_order||0) - (b.sort_order||0))
                                 .map(f => f.feature);
                         } else if (typeof pkg.features === 'string') {
-                            // Fallback jika API pricing me-return comma-separated (backward compatibility)
                             pkg.features = pkg.features.split(',').map(s => s.trim());
                         } else if (!pkg.features) {
                             pkg.features = [];
@@ -918,7 +926,6 @@
             }
         }
 
-        // --- 3. RENDER ALL DATA ---
         function renderData(data) {
             renderSettings(data.settings || {});
             processPortfolio(data.portfolio || []);
@@ -931,12 +938,10 @@
             initMarquee();
             renderPortfolio('semua');
             
-            // Re-trigger animasi kemunculan elemen
             reveal();
         }
 
-        // --- 4. PROCESS DATA FUNGSI UTAMA ---
-        // PATCH C: Dynamic Settings
+        // --- PATCH v1.3 PERFORMANCE: SMART HYDRATION (Hanya Update DOM Jika Berubah) ---
         function renderSettings(settings) {
             const site_name = settings.site_name || defaultSettings.site_name;
             const tagline = settings.tagline || defaultSettings.tagline;
@@ -952,71 +957,68 @@
             const contact_address = settings.contact_address !== undefined ? settings.contact_address : defaultSettings.contact_address;
             const whatsapp_link = settings.whatsapp_link !== undefined ? settings.whatsapp_link : (settings.whatsapp_number ? `https://wa.me/${settings.whatsapp_number}` : defaultSettings.whatsapp_link);
             
-            document.title = site_name + (tagline ? ` | ${tagline}` : '');
+            const newTitle = site_name + (tagline ? ` | ${tagline}` : '');
+            if (document.title !== newTitle) document.title = newTitle;
             
-            document.querySelectorAll('.logo-text:not(#footer-brand)').forEach(el => el.textContent = site_name);
-            document.querySelectorAll('.tagline-text:not(#footer-tagline)').forEach(el => el.textContent = tagline);
-            document.querySelectorAll('.logo-img').forEach(el => el.src = logo_url);
+            document.querySelectorAll('.logo-text:not(#footer-brand)').forEach(el => { if (el.textContent !== site_name) el.textContent = site_name; });
+            document.querySelectorAll('.tagline-text:not(#footer-tagline)').forEach(el => { if (el.textContent !== tagline) el.textContent = tagline; });
+            document.querySelectorAll('.logo-img').forEach(el => { if (el.getAttribute('src') !== logo_url) el.setAttribute('src', logo_url); });
             
             const faviconEl = document.getElementById('favicon');
-            if(faviconEl) faviconEl.href = favicon_url;
+            if(faviconEl && faviconEl.getAttribute('href') !== favicon_url) faviconEl.setAttribute('href', favicon_url);
 
             const waContainer = document.getElementById('footer-wa-container');
             if (whatsapp_link && whatsapp_link.trim() !== '') {
-                document.querySelectorAll('.wa-link').forEach(el => el.href = whatsapp_link);
-                if(waContainer) waContainer.style.display = 'flex';
+                document.querySelectorAll('.wa-link').forEach(el => { if (el.getAttribute('href') !== whatsapp_link) el.setAttribute('href', whatsapp_link); });
+                if(waContainer && waContainer.style.display !== 'flex') waContainer.style.display = 'flex';
             } else {
-                document.querySelectorAll('.wa-link').forEach(el => el.href = '#');
-                if(waContainer) waContainer.style.display = 'none';
+                document.querySelectorAll('.wa-link').forEach(el => { if (el.getAttribute('href') !== '#') el.setAttribute('href', '#'); });
+                if(waContainer && waContainer.style.display !== 'none') waContainer.style.display = 'none';
             }
 
             const footerBrandEl = document.getElementById('footer-brand');
-            if(footerBrandEl) footerBrandEl.textContent = footer_brand;
+            if(footerBrandEl && footerBrandEl.textContent !== footer_brand) footerBrandEl.textContent = footer_brand;
             
             const footerTaglineEl = document.getElementById('footer-tagline');
-            if(footerTaglineEl) footerTaglineEl.textContent = footer_tagline;
+            if(footerTaglineEl && footerTaglineEl.textContent !== footer_tagline) footerTaglineEl.textContent = footer_tagline;
             
             const footerTextEl = document.getElementById('footer-text');
-            if(footerTextEl) footerTextEl.innerHTML = footer_text;
+            if(footerTextEl && footerTextEl.innerHTML !== footer_text) footerTextEl.innerHTML = footer_text;
 
             const emailEl = document.getElementById('footer-email');
             const emailContainer = document.getElementById('footer-email-container');
             if (contact_email && contact_email.trim() !== '') {
-                if(emailEl) emailEl.textContent = contact_email;
-                if(emailContainer) emailContainer.style.display = 'flex';
+                if(emailEl && emailEl.textContent !== contact_email) emailEl.textContent = contact_email;
+                if(emailContainer && emailContainer.style.display !== 'flex') emailContainer.style.display = 'flex';
             } else {
-                if(emailContainer) emailContainer.style.display = 'none';
+                if(emailContainer && emailContainer.style.display !== 'none') emailContainer.style.display = 'none';
             }
 
             const phoneEl = document.getElementById('footer-phone');
             const phoneContainer = document.getElementById('footer-phone-container');
             if (contact_phone && contact_phone.trim() !== '') {
-                if(phoneEl) phoneEl.textContent = contact_phone;
-                if(phoneContainer) phoneContainer.style.display = 'flex';
+                if(phoneEl && phoneEl.textContent !== contact_phone) phoneEl.textContent = contact_phone;
+                if(phoneContainer && phoneContainer.style.display !== 'flex') phoneContainer.style.display = 'flex';
             } else {
-                if(phoneContainer) phoneContainer.style.display = 'none';
+                if(phoneContainer && phoneContainer.style.display !== 'none') phoneContainer.style.display = 'none';
             }
 
             const addressEl = document.getElementById('footer-address');
             const addressContainer = document.getElementById('footer-address-container');
             if (contact_address && contact_address.trim() !== '') {
-                if(addressEl) addressEl.textContent = contact_address;
-                if(addressContainer) addressContainer.style.display = 'flex';
+                if(addressEl && addressEl.textContent !== contact_address) addressEl.textContent = contact_address;
+                if(addressContainer && addressContainer.style.display !== 'flex') addressContainer.style.display = 'flex';
             } else {
-                if(addressContainer) addressContainer.style.display = 'none';
+                if(addressContainer && addressContainer.style.display !== 'none') addressContainer.style.display = 'none';
             }
         }
 
-        // PATCH D: Dynamic Social Media
         function processSocial(data) {
             const container = document.getElementById('footer-social-container');
             if (!container) return;
             container.innerHTML = '';
             
-            if (!data || !Array.isArray(data) || data.length === 0) {
-                // Biarkan kosong jika tidak ada sosmed aktif
-                return;
-            }
+            if (!data || !Array.isArray(data) || data.length === 0) return;
             
             const activeSocials = data
                 .filter(item => item.active === true || String(item.active).toLowerCase() === 'true' || item.active === 1 || String(item.active) === '1')
@@ -1060,7 +1062,6 @@
             gridConfig.social.labels = data.filter(i => i.category.toLowerCase() === 'social').map(i => i.title);
         }
 
-        // PATCH E: Rendering Dynamic Pricing with Features
         function processPricing(data) {
             const grid = document.getElementById('pricing-grid');
             grid.innerHTML = '';
@@ -1159,12 +1160,8 @@
             });
         }
 
-        // --- 5. RENDER ELEMENT DINAMIS LAINNYA ---
-        function initHeroAndWhyChooseUs() {
-            const heroGrid = document.getElementById('hero-grid');
-            const whyChooseGrid = document.getElementById('why-choose-grid');
-            heroGrid.innerHTML = ''; whyChooseGrid.innerHTML = '';
-            
+        // --- PATCH v1.3 PERFORMANCE: Memisahkan render HTML hanya jika Data berubah ---
+        function initHeroAndWhyChooseUs(isEager = false) {
             const sLogo = logoImages[0] || premiumPlaceholder;
             const sBanner = bannerImages[0] || premiumPlaceholder;
             const sThumb = thumbnailImages[0] || premiumPlaceholder;
@@ -1177,11 +1174,25 @@
                 { src: sAds, label: 'Ads Creative', icon: 'ph-megaphone', color: 'text-primary', delay: '0.6s' }
             ];
 
+            const wcImages = [logoImages[1]||sLogo, bannerImages[1]||sBanner, thumbnailImages[1]||sThumb, adsImages[1]||sAds];
+
+            // Mengecek apakah data gambar masih sama dengan yang tampil (SKIP RENDER jika sama)
+            const currentHash = heroItems.map(i => i.src).join('|') + '||' + wcImages.join('|');
+            if (currentHash === lastHeroHash) return; 
+            lastHeroHash = currentHash;
+
+            const heroGrid = document.getElementById('hero-grid');
+            const whyChooseGrid = document.getElementById('why-choose-grid');
+            heroGrid.innerHTML = ''; whyChooseGrid.innerHTML = '';
+            
+            // Set Atribut Eager vs Lazy Berdasarkan Prioritas Eksekusi
+            const loadAttr = isEager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+
             heroItems.forEach((item, idx) => {
                 const mtClass = (idx === 1) ? 'mt-8' : (idx === 2) ? '-mt-8' : '';
                 heroGrid.innerHTML += `
                     <div class="glass-card aspect-square rounded-3xl p-2 relative group overflow-hidden animate-micro-float skeleton ${mtClass}" style="animation-delay: ${item.delay}; transition: transform 0.3s ease;">
-                        <img src="${item.src}" alt="${item.label}" class="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700 image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
+                        <img src="${item.src}" alt="${item.label}" class="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700 image-fade" ${loadAttr} decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
                         <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-textMain shadow-lg flex items-center border border-white/50 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
                             <i class="ph-fill ${item.icon} ${item.color} mr-2"></i> ${item.label}
                         </div>
@@ -1189,37 +1200,36 @@
                 `;
             });
 
-            const wcImages = [logoImages[1]||sLogo, bannerImages[1]||sBanner, thumbnailImages[1]||sThumb, adsImages[1]||sAds];
             wcImages.forEach((img, idx) => {
                 const marginClass = (idx === 1) ? 'mt-8' : (idx === 2) ? '-mt-8' : '';
                 whyChooseGrid.innerHTML += `
                     <div class="animate-micro-float w-full aspect-square relative z-10 skeleton rounded-3xl ${marginClass}" style="animation-delay: ${idx * 1.5}s;">
-                        <img src="${img}" class="rounded-3xl w-full h-full object-cover shadow-lg transition-all duration-1000 ease-in-out border border-transparent image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
+                        <img src="${img}" class="rounded-3xl w-full h-full object-cover shadow-lg transition-all duration-1000 ease-in-out border border-transparent image-fade" ${loadAttr} decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}">
                     </div>
                 `;
             });
             updateWcState();
         }
 
+        // --- PATCH v1.3 PERFORMANCE: Skip Render untuk Animasi Marquee ---
         function initMarquee() {
+            const logos = logoImages.length ? logoImages : Array(20).fill(premiumPlaceholder);
+            const banners = bannerImages.length ? bannerImages : Array(20).fill(premiumPlaceholder);
+            
+            const currentHash = logos.join('|') + '||' + banners.join('|');
+            if (currentHash === lastMarqueeHash) return; // SKIP jika gambar CMS tidak terupdate
+            lastMarqueeHash = currentHash;
+
             const row1 = document.getElementById('marquee-row-1');
             const row3 = document.getElementById('marquee-row-3');
             row1.innerHTML = ''; row3.innerHTML = '';
             
-            const logos = logoImages.length ? logoImages : Array(20).fill(premiumPlaceholder);
-            const logosToRender = [
-                ...logos.slice(0, 20),
-                ...logos.slice(0, 20)
-            ];
+            const logosToRender = [...logos.slice(0, 20), ...logos.slice(0, 20)];
             logosToRender.forEach(src => {
                 row1.innerHTML += `<div class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 bg-white rounded-3xl shadow-sm border border-gray-100 p-2 group hover:shadow-md transition-all skeleton"><img src="${src}" class="w-full h-full rounded-2xl object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}"></div>`;
             });
 
-            const banners = bannerImages.length ? bannerImages : Array(20).fill(premiumPlaceholder);
-            const bannersToRender = [
-                ...banners.slice(0, 20),
-                ...banners.slice(0, 20)
-            ];
+            const bannersToRender = [...banners.slice(0, 20), ...banners.slice(0, 20)];
             bannersToRender.forEach(src => {
                 row3.innerHTML += `<div class="flex-shrink-0 w-40 md:w-48 aspect-[9/16] bg-gray-200 rounded-2xl overflow-hidden relative group border border-gray-100 shadow-sm skeleton"><img src="${src}" class="w-full h-full object-cover image-fade" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="${imgErrorHandler}"></div>`;
             });
@@ -1251,10 +1261,8 @@
 
         function renderPortfolio(filter) {
             const gridContainer = document.getElementById('portfolio-grid');
-            if(document.querySelector('.col-span-full.text-center.py-12')) {
-                // Jangan reset grid jika sedang mode error state
-                return;
-            }
+            if(document.querySelector('.col-span-full.text-center.py-12')) return;
+            
             gridContainer.innerHTML = '';
             
             if (filter === 'semua') {
@@ -1316,7 +1324,6 @@
             }
         }, 5000);
 
-        // UI Interactions
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
@@ -1423,11 +1430,7 @@
                 e.preventDefault();
                 
                 const name = document.getElementById('lead-name').value.trim();
-                
-                // PATCH v1.2: Memastikan whatsapp ditangkap sebagai teks biasa (string) tanpa dirubah ke Number() 
-                // Sehingga karakter 0 di awal (cth: 0812...) tidak menghilang saat di kirim ke payload.
                 const whatsapp = document.getElementById('lead-whatsapp').value.trim();
-                
                 const service = document.getElementById('lead-service').value;
                 const notes = document.getElementById('lead-notes').value.trim();
 
@@ -1436,7 +1439,6 @@
                     return;
                 }
 
-                // Loading State
                 submitBtn.disabled = true;
                 submitText.textContent = 'Mengirim...';
                 submitIcon.classList.add('hidden');
@@ -1445,7 +1447,6 @@
                 try {
                     if (!window.API_URL) throw new Error("API_URL not found");
 
-                    // Memasukkan raw string secara langsung ke payload JSON
                     const payload = {
                         name: name,
                         whatsapp: whatsapp, 
@@ -1472,7 +1473,6 @@
                     console.error('Lead Submit Error:', error);
                     showToast('Gagal mengirim data. Silakan coba lagi.', 'error');
                 } finally {
-                    // Reset Loading State
                     submitBtn.disabled = false;
                     submitText.textContent = 'Kirim Konsultasi Gratis';
                     submitIcon.classList.remove('hidden');
@@ -1522,7 +1522,14 @@
             }, 5000);
         }
 
-        // EXECUTE RUNTIME
+        // ==============================================
+        // PATCH v1.3: EXECUTE RUNTIME ORDER
+        // ==============================================
+        
+        // 1. Render data static langsung di detik 0.0 tanpa tunggu API
+        renderStaticContent();
+        
+        // 2. Fetch API secara paralel di background untuk merubah yang perlu diubah saja
         initApp();
 
     </script>
